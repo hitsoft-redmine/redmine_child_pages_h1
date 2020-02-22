@@ -14,7 +14,8 @@ module RedmineChildPagesH1::H1
           _title = '|' + _title
         end
         _textile = "[[#{_page}#{_title}]]"
-        textilizable(_textile, :object => obj, :headings => false)
+        res = textilizable(_textile, :object => obj, :headings => false)
+        RedmineChildPagesH1.remove_p(res).html_safe
       end
     end
   end

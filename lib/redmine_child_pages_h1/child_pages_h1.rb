@@ -21,7 +21,10 @@ module RedmineChildPagesH1::ChildPagesH1
       end
       raise 'Page not found' if page.nil? || !User.current.allowed_to?(:view_wiki_pages, page.wiki.project)
       pages = page.self_and_descendants(options[:depth]).group_by(&:parent_id)
-      _textilizable = -> (txt) { textilizable(txt, :object => obj, :headings => false) }
+      _textilizable = -> (txt) {
+        res = textilizable(txt, :object => obj, :headings => false)
+        RedmineChildPagesH1.remove_p(res)
+      }
       _link_to = -> (name = nil, options = nil, html_options = nil, &block) { link_to(name, options, html_options, &block) }
       RedmineChildPagesH1::ChildPagesH1.render_page_hierarchy(pages, _textilizable, _link_to, options[:parent] ? page.parent_id : page.id)
     end
