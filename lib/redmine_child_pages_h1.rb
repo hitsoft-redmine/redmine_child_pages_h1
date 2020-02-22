@@ -25,7 +25,7 @@ module RedmineChildPagesH1
   end
 
   def remove_p(html)
-    html.to_s.gsub(/<p>|<\/p>/, '')
+    html.to_s.gsub(/<p>|<\/p>/, '').html_safe
   end
 
   module_function :wiki_page_title

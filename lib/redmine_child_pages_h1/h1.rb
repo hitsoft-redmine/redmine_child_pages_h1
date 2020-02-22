@@ -11,11 +11,11 @@ module RedmineChildPagesH1::H1
         _page = args.first.to_s
         _title = RedmineChildPagesH1.wiki_page_title(_page, obj.project)
         unless _title.nil?
-          _title = '|' + _title
+          _title = '|' + _title.gsub(/@(.*)@/) { |m| $1 }
         end
         _textile = "[[#{_page}#{_title}]]"
         res = textilizable(_textile, :object => obj, :headings => false)
-        RedmineChildPagesH1.remove_p(res).html_safe
+        RedmineChildPagesH1.remove_p(res)
       end
     end
   end
