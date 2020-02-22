@@ -1,7 +1,7 @@
 plugin_name = :redmine_child_pages_h1
 
 Rails.configuration.to_prepare do
-  %w{global_toc}.each do |file_name|
+  %w{child_pages_h1 h1}.each do |file_name|
     require_dependency "#{plugin_name}/#{file_name}"
   end
 end
