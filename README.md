@@ -5,7 +5,7 @@ This is a plugin for Redmine with wiki macro that works like `child_pages` but i
 ## Example
 
 ```
-{{global_toc}}
+{{child_pages_h1}}
 ```
 
 ## Installation
