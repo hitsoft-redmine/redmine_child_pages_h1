@@ -1,6 +1,6 @@
 module RedmineChildPagesH1
 
-  HEADING_RE = /^\s*h1.\s+(.*)\s*$/i unless const_defined?(:HEADING_RE)
+  HEADING_RE = /^\s*h\d[^\.]*\.\s+(.*)\s*$/i unless const_defined?(:HEADING_RE)
 
   def wiki_page_title(page, project)
     page_title(Wiki.find_page(page, :project => project))
